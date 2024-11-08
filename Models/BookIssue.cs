@@ -5,7 +5,7 @@ namespace LibraryMgmt.Models
     public class BookIssue
     {
         [Key]
-        public Guid guid { get; set; } // Primary key
+        public Guid Guid { get; set; } // Primary key
         public Guid BookId { get; set; } // Foreign key to Book
         public Guid UserId { get; set; } // Foreign key to User
         public DateTime IssueDate { get; set; }

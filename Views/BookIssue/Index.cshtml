@@ -1,0 +1,64 @@
+﻿@model List<LibraryMgmt.ViewModel.BookIssueListViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Issued Books</h1>
+
+<p>
+    <a asp-action="Issue">Issue Books here</a>
+</p>
+<form method="get" asp-action="Index">
+    <input type="text" name="searchTitle" placeholder="Search by title" value="@ViewData["CurrentFilter"]" />
+    <button type="submit">Search</button>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                Book
+            </th>
+            <th>
+                User
+            </th>
+            <th>
+                Issue Date
+            </th>
+            <th>
+                Due Date
+            </th>
+            <th>
+                Return Date
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IssueDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DueDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnDate)
+                </td>
+            <td>
+                
+                <a asp-action="Details" asp-route-id="@item.Guid">Details</a> 
+                
+            </td> 
+        </tr>
+}
+    </tbody>
+</table>

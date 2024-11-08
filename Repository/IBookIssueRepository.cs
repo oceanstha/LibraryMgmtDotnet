@@ -1,11 +1,19 @@
 ﻿using LibraryMgmt.Models;
+using LibraryMgmt.ViewModel;
 
 namespace LibraryMgmt.Repository
 {
     public interface IBookIssueRepository
     {
-        Task<BookIssue> GetIssue (Guid guid);
-        Task<IEnumerable<BookIssue>> GetIssues ();
-        Task<BookIssue> IssueBook(Guid BookId, Guid UserId);
+        void IssueBook(UserBookIssueViewModel userBookIssueViewModel);
+
+        BookIssueListViewModel GetIssue(Guid guid);
+        void ReturnBook(Guid guid);
+        IEnumerable<BookIssue> GetIssuedBooks();
+        IEnumerable<BookIssue> SearchIssuedBooks(string title);
+
+        // Additional methods for fetching users and books
+        IEnumerable<User> GetUsers();
+        IEnumerable<Book> GetBooks();
     }
 }

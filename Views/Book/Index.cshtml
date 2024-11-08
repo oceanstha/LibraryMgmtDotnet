@@ -4,11 +4,15 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>BOOKS</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<form method="get" asp-action="Index">
+    <input type="text" name="searchTitle" placeholder="Search by title" value="@ViewData["CurrentFilter"]" />
+    <button type="submit">Search</button>
+</form>
 <table class="table">
     <thead>
         <tr>

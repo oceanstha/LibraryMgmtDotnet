@@ -27,6 +27,7 @@ namespace LibraryMgmt.Repository
 
         public async Task<User> GetUser(Guid guid)
         {
+            
             return await _libraryDbContext.Users.FindAsync(guid);
         }
       
@@ -34,7 +35,7 @@ namespace LibraryMgmt.Repository
         public async Task<User> UpdateUser(User user)
         {
             _libraryDbContext.Users.Update(user);
-            _libraryDbContext.SaveChangesAsync();
+            await _libraryDbContext.SaveChangesAsync();
             return user;
         }
 

@@ -19,7 +19,8 @@ namespace LibraryMgmt.Controllers
             return View(users);
         }
 
-        [HttpGet("user/details/{guid}")]
+        [HttpGet]
+        [Route("user/details/{guid}")]
         public async Task<IActionResult> Details(Guid guid)
         {
             var user =await _userRepository.GetUser(guid);
@@ -44,9 +45,11 @@ namespace LibraryMgmt.Controllers
             }
         }
 
-        [HttpGet("user/edit/{guid}")]
+        [HttpGet]
+        [Route("user/edit/{guid}")]
         public async Task<IActionResult> Edit(Guid guid)
         {
+            Console.WriteLine("GUID in controller : " + guid);
             var user = await _userRepository.GetUser(guid);
             return View(user);
         }

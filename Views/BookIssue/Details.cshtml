@@ -1,0 +1,27 @@
+﻿@model LibraryMgmt.ViewModel.BookIssueListViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Book Issue Details</h1>
+<div>
+    <h4>@Model.BookTitle</h4>
+    <p>User: @Model.UserName</p>
+    <p>Issue Date: @Model.IssueDate</p>
+    <p>Due Date: @Model.DueDate</p>
+    @{
+        if 
+        (@Model.ReturnDate== null){
+            <form asp-action="Return" asp-route-id="@Model.Guid" method="post">
+                <button type="submit">Return</button>
+            </form>
+
+        }
+        else
+        {
+            <p>Return Date: @Model.ReturnDate</p>
+        }
+    }<br />
+    <a asp-action="Index">Back to List</a>
+</div>

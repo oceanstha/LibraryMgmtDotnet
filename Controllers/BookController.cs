@@ -13,12 +13,15 @@ namespace LibraryMgmt.Controllers
         {
             _bookRepository = bookRepository;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchTitle)
         {
-            var books = await _bookRepository.GetAllBooks();
+            var books = string.IsNullOrEmpty(searchTitle)
+                ? await _bookRepository.GetAllBooks() 
+                : await _bookRepository.SearchBookByTitle(searchTitle);
             return View(books);
         }
-        [HttpGet("book/details/{guid}")]
+        [HttpGet]
+        [Route("book/details/{guid}")]
         public async Task<IActionResult> Details(Guid guid)
         {
             var book = await _bookRepository.GetBookById(guid);
@@ -39,7 +42,8 @@ namespace LibraryMgmt.Controllers
             }
             return View(book);
         }
-        [HttpGet("book/edit/{guid}")]
+        [HttpGet]
+        [Route("book/edit/{guid}")]
         public async Task<IActionResult> Edit(Guid guid)
         {
             var book = await _bookRepository.GetBookById(guid);

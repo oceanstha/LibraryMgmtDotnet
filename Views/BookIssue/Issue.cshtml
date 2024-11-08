@@ -1,0 +1,33 @@
+﻿@model LibraryMgmt.ViewModel.UserBookIssueViewModel
+
+<h2>Issue Book</h2>
+<form asp-action="Issue" method="post">
+    <div>
+        <label>User:</label>
+        <select asp-for="SelectedUserId" asp-items="@(new SelectList(Model.Users, "guid", "Name"))">
+            <option value="">Select a User</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Book:</label>
+        <select asp-for="SelectedBookId" asp-items="@(new SelectList(Model.Books, "Guid", "Title"))">
+            <option value="">Select a Book</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Issue Date:</label>
+        <input asp-for="IssueDate" type="date" />
+    </div>
+    <div>
+        <label>Due Date:</label>
+        <input asp-for="DueDate" type="date" />
+    </div>
+    @* <div>
+        <label>Return Date:</label>
+        <input asp-for="ReturnDate" type="date" />
+    </div> *@
+
+    <button type="submit">Issue Book</button>
+</form>

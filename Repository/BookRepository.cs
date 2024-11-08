@@ -2,6 +2,7 @@
 using LibraryMgmt.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryMgmt.Repository
@@ -32,6 +33,10 @@ namespace LibraryMgmt.Repository
         public async Task<IEnumerable<Book>> GetAllBooks()
         {
             return await _libraryDbContext.Books.ToListAsync();
+        }
+        public async Task<IEnumerable<Book>> SearchBookByTitle(string title)
+        {
+            return await _libraryDbContext.Books.Where(b=>b.Title.Contains(title)).ToListAsync();
         }
 
         public async Task<Book> GetBookById(Guid Guid)
