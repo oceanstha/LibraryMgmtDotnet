@@ -1,10 +1,12 @@
-﻿using LibraryMgmt.Models;
+﻿using LibraryMgmt.Filters;
+using LibraryMgmt.Models;
 using LibraryMgmt.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryMgmt.Controllers
 {
+    [SessionAuth]
     public class BookController : Controller
     {
         private readonly IBookRepository _bookRepository;

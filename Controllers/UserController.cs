@@ -1,10 +1,12 @@
 ﻿using LibraryMgmt.Data;
+using LibraryMgmt.Filters;
 using LibraryMgmt.Models;
 using LibraryMgmt.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryMgmt.Controllers
 {
+    [SessionAuth]
     public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;

@@ -1,9 +1,11 @@
+using LibraryMgmt.Filters;
 using LibraryMgmt.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace LibraryMgmt.Controllers
 {
+    [SessionAuth]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

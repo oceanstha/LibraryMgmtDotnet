@@ -1,4 +1,5 @@
-﻿using LibraryMgmt.Repository;
+﻿using LibraryMgmt.Filters;
+using LibraryMgmt.Repository;
 using LibraryMgmt.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -6,6 +7,7 @@ using System.Drawing;
 
 namespace LibraryMgmt.Controllers
 {
+    [SessionAuth]
     public class BookIssueController : Controller
     {
         private readonly IBookIssueRepository _bookIssueRepository;
@@ -55,7 +57,7 @@ namespace LibraryMgmt.Controllers
         public IActionResult Index(string searchTitle)
         {
             
-            var issueBooks = searchTitle.IsNullOrEmpty() ? _bookIssueRepository.GetIssuedBooks() : _bookIssueRepository.SearchIssuedBooks(searchTitle);
+            var issueBooks = string.IsNullOrEmpty(searchTitle) ? _bookIssueRepository.GetIssuedBooks() : _bookIssueRepository.SearchIssuedBooks(searchTitle);
 
             var issuedBookViewModels = issueBooks.Select(issue => new BookIssueListViewModel
                 {
@@ -70,6 +72,7 @@ namespace LibraryMgmt.Controllers
             
             return View(issuedBookViewModels);
         }
+
         [HttpPost]
         [Route("BookIssue/Details/{id:Guid}")]
         public IActionResult Return(Guid id)

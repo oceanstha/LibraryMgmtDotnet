@@ -26,6 +26,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\NABU-1DGMW33\source\repos\LibraryMgmt
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/NABU-1DGMW33/source/repos/LibraryMgmt/Views/Auth/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/NABU-1DGMW33/source/repos/LibraryMgmt/Views/BookIssue/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va0lzc3VlXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
