@@ -6,6 +6,6 @@ namespace LibraryMgmt.Repository
     {
         Task AddAdminUserAsync(AdminUser adminUser);
         Task<IEnumerable<AdminUser>> GetAllAdminAsync();
-        
+
     }
 }

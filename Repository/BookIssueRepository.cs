@@ -1,8 +1,10 @@
 ﻿using LibraryMgmt.Data;
 using LibraryMgmt.Models;
 using LibraryMgmt.ViewModel;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 
 namespace LibraryMgmt.Repository
 {
@@ -26,7 +28,19 @@ namespace LibraryMgmt.Repository
         public BookIssueListViewModel GetIssue(Guid Guid)
         {
             BookIssue? IssueBook = _libraryContext.BookIssues.Include(b=>b.Book).Include(u=>u.User).FirstOrDefault(g=>g.Guid==Guid);
-                              
+
+            float fine = 0;
+            if (IssueBook.ReturnDate.HasValue) // Check if ReturnDate is not null
+            {
+                // Calculate the difference between ReturnDate and DueDate as TimeSpan
+                var overdueDays = (IssueBook.ReturnDate.Value.Date - IssueBook.DueDate.Date).TotalDays;
+
+                if (overdueDays > 0)
+                {
+                    fine = (float)overdueDays * 5;
+                }
+            }
+
             var BookIssueViewModel = new BookIssueListViewModel
             {
                 Guid = IssueBook.Guid,
@@ -35,8 +49,12 @@ namespace LibraryMgmt.Repository
                 IssueDate = IssueBook.IssueDate,
                 DueDate = IssueBook.DueDate,
                 ReturnDate = IssueBook.ReturnDate,
+                Fine = fine,
             };
-            return BookIssueViewModel;
+
+            
+
+            return (BookIssueViewModel);
         }
 
         public void IssueBook(UserBookIssueViewModel userBookIssueViewModel)
@@ -56,7 +74,6 @@ namespace LibraryMgmt.Repository
 
         public void ReturnBook(Guid Guid)
         {
-            Console.WriteLine("GUID in Repository: " + Guid);
             var bookIssue = _libraryContext.BookIssues.Find(Guid);
             if (bookIssue != null)
             {

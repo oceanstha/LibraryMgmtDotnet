@@ -3,6 +3,10 @@
 @{
     ViewData["Title"] = "Details";
 }
+@{
+    // Accessing the ViewBag.fine value
+    var fine = ViewBag.fine;
+}
 
 <h1>Book Issue Details</h1>
 <div>
@@ -22,6 +26,8 @@
         {
             <p>Return Date: @Model.ReturnDate</p>
         }
-    }<br />
+    }
+    <p>Fine: Rs. @Model.Fine</p>
+
     <a asp-action="Index">Back to List</a>
 </div>

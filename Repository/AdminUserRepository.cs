@@ -22,7 +22,7 @@ namespace LibraryMgmt.Repository
 
         public async Task<IEnumerable<AdminUser>> GetAllAdminAsync()
         {
-            return await _libraryDbContext.AdminUsers.ToListAsync(); 
+            return await _libraryDbContext.AdminUsers.ToListAsync();
         }
     }
 }

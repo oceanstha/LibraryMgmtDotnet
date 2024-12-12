@@ -11,7 +11,8 @@ namespace LibraryMgmt.Models
         public DateTime IssueDate { get; set; }
         public DateTime DueDate { get; set; }
         public DateTime? ReturnDate { get; set; } // Nullable for books not yet returned
-
+        
+        public float? Fine {  get; set; }
         public virtual Book Book { get; set; } // Navigation property
         public virtual User User { get; set; } // Navigation property
     }

@@ -9,5 +9,7 @@
         public DateTime DueDate { get; set; }
         public DateTime? ReturnDate { get; set; }
 
+        public float? Fine {  get; set; }
+
     }
 }
