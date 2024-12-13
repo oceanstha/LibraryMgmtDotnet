@@ -18,13 +18,13 @@ namespace LibraryMgmt.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(string username, string password) 
+        public async Task<IActionResult> Login(string Name, string PasswordHash) 
         {
-            var adminUser = await _authRepository.AuthenticateUserAsync(username, password);
+            var adminUser = await _authRepository.AuthenticateUserAsync(Name, PasswordHash);
             if (adminUser == null)
             {
                 ViewBag.Error = "Invalid Username or Password";
-                return ViewBag.Error;
+                return View();
             }
             HttpContext.Session.SetString("AdminUserId", adminUser.Guid.ToString());
             return RedirectToAction("Index","Home");

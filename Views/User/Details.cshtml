@@ -1,4 +1,4 @@
-﻿@model LibraryMgmt.Models.User
+﻿@model (LibraryMgmt.Models.User, List<LibraryMgmt.Models.BookIssue>)
 
 @{
     ViewData["Title"] = "Details";
@@ -11,32 +11,74 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Item1.Name)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Item1.Name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Age)
+            @Html.DisplayNameFor(model => model.Item1.Age)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Age)
+            @Html.DisplayFor(model => model.Item1.Age)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.Item1.Email)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
+            @Html.DisplayFor(model => model.Item1.Email)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
+            @Html.DisplayNameFor(model => model.Item1.Address)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Address)
+            @Html.DisplayFor(model => model.Item1.Address)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.guid">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.Item1.guid">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>
+                    Book
+                </th>
+                <th>
+                    Issue Date
+                </th>
+                <th>
+                    Due Date
+                </th>
+                <th>
+                    Return Date
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Item2)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Book.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IssueDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DueDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReturnDate)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

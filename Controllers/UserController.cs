@@ -51,8 +51,7 @@ namespace LibraryMgmt.Controllers
         [Route("user/edit/{guid}")]
         public async Task<IActionResult> Edit(Guid guid)
         {
-            Console.WriteLine("GUID in controller : " + guid);
-            var user = await _userRepository.GetUser(guid);
+            var (user,userIssue) = await _userRepository.GetUser(guid);
             return View(user);
         }
 
@@ -66,10 +65,11 @@ namespace LibraryMgmt.Controllers
             }
             return View(user);
         }
+
         [HttpGet("user/delete/{guid}")]
         public async Task<IActionResult> Delete(Guid guid)
         {
-            var user = await _userRepository.GetUser(guid);
+            var (user, userIssue) = await _userRepository.GetUser(guid);
             
             if (user == null)
             {

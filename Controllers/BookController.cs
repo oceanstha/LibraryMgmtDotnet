@@ -62,6 +62,7 @@ namespace LibraryMgmt.Controllers
             }
             return View(book);
         }
+
         [HttpGet("book/delete/{guid}")]
         public async Task<IActionResult> Delete(Guid guid)
         {
