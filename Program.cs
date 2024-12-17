@@ -27,6 +27,19 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+builder.Services.AddAuthentication("CookieAuth")
+    .AddCookie("CookieAuth", options =>
+    {
+        options.LoginPath = "/Auth/Login";
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminPolicy", policy => policy.RequireClaim("Role", "Admin"));
+    options.AddPolicy("UserPolicy", policy => policy.RequireClaim("Role", "User"));
+    options.AddPolicy("ManagerPolicy", policy => policy.RequireClaim("Role", "Manager"));
+});
+
 
 var app = builder.Build();
 

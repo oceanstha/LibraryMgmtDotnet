@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|c:\\users\\nabu-1dgmw33\\source\\repos\\librarymgmt\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|c:\\users\\nabu-1dgmw33\\source\\repos\\librarymgmt\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|c:\\users\\nabu-1dgmw33\\source\\repos\\librarymgmt\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|solutionrelative:repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|c:\\users\\nabu-1dgmw33\\source\\repos\\librarymgmt\\filters\\sessionauthattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|solutionrelative:filters\\sessionauthattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|c:\\users\\nabu-1dgmw33\\source\\repos\\librarymgmt\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|c:\\users\\nabu-1dgmw33\\source\\repos\\librarymgmt\\views\\user\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|solutionrelative:views\\user\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -13,14 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|c:\\users\\nabu-1dgmw33\\source\\repos\\librarymgmt\\views\\user\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|solutionrelative:views\\user\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|c:\\users\\nabu-1dgmw33\\source\\repos\\librarymgmt\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|c:\\users\\nabu-1dgmw33\\source\\repos\\librarymgmt\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|solutionrelative:repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{13B78725-F1B5-4154-B78A-5B0D5FF625A2}|LibraryMgmt.csproj|c:\\users\\nabu-1dgmw33\\source\\repos\\librarymgmt\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -61,12 +73,51 @@
               "Name": "ST:1:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
             },
             {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T05:18:42.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T05:13:42.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SessionAuthAttribute.cs",
+              "DocumentMoniker": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\Filters\\SessionAuthAttribute.cs",
+              "RelativeDocumentMoniker": "Filters\\SessionAuthAttribute.cs",
+              "ToolTip": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\Filters\\SessionAuthAttribute.cs",
+              "RelativeToolTip": "Filters\\SessionAuthAttribute.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T05:13:21.291Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\Views\\User\\Edit.cshtml",
               "RelativeDocumentMoniker": "Views\\User\\Edit.cshtml",
@@ -79,7 +130,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\Views\\User\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\User\\Index.cshtml",
@@ -92,7 +143,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\Views\\User\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\User\\Details.cshtml",
@@ -105,7 +156,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\Views\\User\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\User\\Create.cshtml",
@@ -118,20 +169,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\Controllers\\UserController.cs",
               "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAzwAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-17T04:20:17.253Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\Repository\\UserRepository.cs",
               "RelativeDocumentMoniker": "Repository\\UserRepository.cs",
@@ -144,7 +195,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
