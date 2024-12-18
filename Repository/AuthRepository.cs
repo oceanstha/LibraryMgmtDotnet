@@ -14,9 +14,9 @@ namespace LibraryMgmt.Repository
         {
             _libraryDbContext = libraryDbContext;
         }
-        public async Task<AdminUser> AuthenticateUserAsync(string Name, string PasswordHash)
+        public async Task<User> AuthenticateUserAsync(string Email, string PasswordHash)
         {
-            var user = await _libraryDbContext.AdminUsers.FirstOrDefaultAsync(u=>u.Name == Name);
+            var user = await _libraryDbContext.Users.FirstOrDefaultAsync(u=>u.Email == Email);
             //Console.WriteLine("USER" + user);
             //Console.WriteLine("PASSWORD"+BCrypt.Net.BCrypt.Verify(password, user.PasswordHash));
             if (user == null || !BCrypt.Net.BCrypt.Verify(PasswordHash, user.PasswordHash))

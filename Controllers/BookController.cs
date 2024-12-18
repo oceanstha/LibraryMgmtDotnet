@@ -1,6 +1,7 @@
 ﻿using LibraryMgmt.Filters;
 using LibraryMgmt.Models;
 using LibraryMgmt.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,11 +31,13 @@ namespace LibraryMgmt.Controllers
             return View(book);
         }
 
+        [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
         public async Task<IActionResult> Create()
         {
             return View();
         }
         [HttpPost]
+        [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
         public  async Task<IActionResult> Create(Book book)
         {
             if (ModelState.IsValid) 
@@ -45,6 +48,7 @@ namespace LibraryMgmt.Controllers
             return View(book);
         }
         [HttpGet]
+        [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
         [Route("book/edit/{guid}")]
         public async Task<IActionResult> Edit(Guid guid)
         {
@@ -53,6 +57,7 @@ namespace LibraryMgmt.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
         public async Task<IActionResult> Edit(Book book)
         {
             if (ModelState.IsValid)
@@ -64,6 +69,7 @@ namespace LibraryMgmt.Controllers
         }
 
         [HttpGet("book/delete/{guid}")]
+        [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
         public async Task<IActionResult> Delete(Guid guid)
         {
             var book = await _bookRepository.GetBookById(guid);
@@ -75,6 +81,7 @@ namespace LibraryMgmt.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
+        [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
         public async Task<IActionResult> DeleteConfirmed(Guid guid)
         {
             await _bookRepository.DeleteBook(guid);

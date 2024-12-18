@@ -5,10 +5,12 @@
 }
 
 <h1>BOOKS</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (User.HasClaim(c => c.Type == "Role" && (c.Value == "Admin" | c.Value == "Manager")))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
 <form method="get" asp-action="Index">
     <input type="text" name="searchTitle" placeholder="Search by title" value="@ViewData["CurrentFilter"]" />
     <button type="submit">Search</button>
@@ -22,15 +24,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.Author)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ISBN)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Publisher)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
@@ -43,20 +41,26 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Author)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ISBN)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
+            
+                @if (User.HasClaim(c => c.Type == "Role" && (c.Value == "Admin" | c.Value == "Manager")))
+                {
             <td>
-                @Html.DisplayFor(modelItem => item.Publisher)
-            </td>
-            <td>
+
                 <a asp-action="Edit" asp-route-id="@item.Guid">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Guid">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Guid">Delete</a>
             </td>
+                }
+                @if (User.HasClaim(c => c.Type == "Role" && c.Value == "User"))
+                {
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Guid">Details</a>
+                    </td>
+                }
         </tr>
 }
     </tbody>

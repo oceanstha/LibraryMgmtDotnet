@@ -15,6 +15,10 @@ namespace LibraryMgmt.Repository
 
         public async Task<User> AddUser(User user)
         {
+            if (!string.IsNullOrEmpty(user.PasswordHash))
+            {
+                user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.PasswordHash);
+            }
             await _libraryDbContext.Users.AddAsync(user);
             await _libraryDbContext.SaveChangesAsync();
             return user;
@@ -35,6 +39,7 @@ namespace LibraryMgmt.Repository
 
         public async Task<User> UpdateUser(User user)
         {
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.PasswordHash);
             _libraryDbContext.Users.Update(user);
             await _libraryDbContext.SaveChangesAsync();
             return user;

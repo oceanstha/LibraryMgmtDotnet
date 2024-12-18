@@ -43,8 +43,14 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Item1.guid">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    @if (User.HasClaim(c => c.Type == "Role" && (c.Value == "Admin" | c.Value == "Manager")))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Item1.guid">Edit </a><span>|</span>
+        <a asp-action="Index">Back to List</a>   
+    }
+    
+    
+    
 </div>
 <div>
     <table class="table">

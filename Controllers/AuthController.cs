@@ -1,6 +1,8 @@
 ﻿using LibraryMgmt.Data;
 using LibraryMgmt.Repository;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace LibraryMgmt.Controllers
 {
@@ -18,15 +20,31 @@ namespace LibraryMgmt.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(string Name, string PasswordHash) 
+        public async Task<IActionResult> Login(string Email, string PasswordHash) 
         {
-            var adminUser = await _authRepository.AuthenticateUserAsync(Name, PasswordHash);
-            if (adminUser == null)
+            var user = await _authRepository.AuthenticateUserAsync(Email, PasswordHash);
+            if (user == null)
             {
-                ViewBag.Error = "Invalid Username or Password";
+                ViewBag.Error = "Invalid Email or Password";
                 return View();
             }
-            HttpContext.Session.SetString("AdminUserId", adminUser.Guid.ToString());
+            
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, user.Name),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim("Role", user.Role)
+            };
+
+            // Create the ClaimsIdentity
+            var claimsIdentity = new ClaimsIdentity(claims, "CookieAuth");
+
+            // Create a ClaimsPrincipal
+            var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+
+            // Sign in the user using cookies
+            await HttpContext.SignInAsync("CookieAuth", claimsPrincipal);
+            HttpContext.Session.SetString("AdminUserId", user.guid.ToString());
             return RedirectToAction("Index","Home");
         }
 

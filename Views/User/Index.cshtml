@@ -3,7 +3,8 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+@if (User.HasClaim(c => c.Type == "Role" && (c.Value == "Admin" | c.Value=="Manager")))
+{
 <h1>USERS</h1>
 
 <p>
@@ -49,11 +50,17 @@
                     @Html.DisplayFor(modelItem => item.Role)
                 </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.guid">Edit</a> |
+                    
+                <a asp-action="Edit" asp-route-id="@item.guid"> Edit</a> |
+                    
                 <a asp-action="Details" asp-route-id="@item.guid">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.guid">Delete</a>
+                    
+                <a asp-action="Delete" asp-route-id="@item.guid">Delete </a>
+                    
             </td>
         </tr>
 }
     </tbody>
 </table>
+}
+

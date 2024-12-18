@@ -1,10 +1,7 @@
 using LibraryMgmt.Data;
 using LibraryMgmt.Repository;
 using LibraryMgmt.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +28,7 @@ builder.Services.AddAuthentication("CookieAuth")
     .AddCookie("CookieAuth", options =>
     {
         options.LoginPath = "/Auth/Login";
+        options.Cookie.Name = "UserAuthCookie";
     });
 
 builder.Services.AddAuthorization(options =>
@@ -38,16 +36,16 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AdminPolicy", policy => policy.RequireClaim("Role", "Admin"));
     options.AddPolicy("UserPolicy", policy => policy.RequireClaim("Role", "User"));
     options.AddPolicy("ManagerPolicy", policy => policy.RequireClaim("Role", "Manager"));
+    options.AddPolicy("AdminOrManagerPolicy", policy =>
+        policy.RequireAssertion(context =>
+            context.User.HasClaim(c => c.Type == "Role" && (c.Value == "Admin" || c.Value == "Manager"))
+        ));
 });
 
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var seeder = scope.ServiceProvider.GetRequiredService<AdminDbSeeder>();
-    await seeder.SeedAdminUserAsync();
-}
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -62,7 +60,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseSession();
+app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.MapControllerRoute(
     name: "default",

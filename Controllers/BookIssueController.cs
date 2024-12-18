@@ -1,6 +1,7 @@
 ﻿using LibraryMgmt.Filters;
 using LibraryMgmt.Repository;
 using LibraryMgmt.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -21,6 +22,7 @@ namespace LibraryMgmt.Controllers
         }
         
         [HttpGet]
+        [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
         public async Task<IActionResult> Issue()
         {
             var users = await _userRepository.GetUsers();
@@ -42,6 +44,7 @@ namespace LibraryMgmt.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
         public IActionResult Issue(UserBookIssueViewModel userBookIssueViewModel)
         {
             if (ModelState.IsValid)
@@ -53,6 +56,7 @@ namespace LibraryMgmt.Controllers
             userBookIssueViewModel.Books=_bookIssueRepository.GetBooks().ToList();
             return View(userBookIssueViewModel);
         }
+        [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
         public IActionResult Index(string searchTitle)
         {
             
@@ -73,15 +77,16 @@ namespace LibraryMgmt.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
         [Route("BookIssue/Details/{id:Guid}")]
         public IActionResult Return(Guid id)
         {
-            Console.WriteLine("GUID in controller: " + id);
             _bookIssueRepository.ReturnBook(id);
             return RedirectToAction("Index"); 
         }
 
         [HttpGet]
+        [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
         [Route("BookIssue/Details/{id:Guid}")]
         public IActionResult Details(Guid id)
         {

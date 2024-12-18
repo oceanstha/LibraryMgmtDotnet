@@ -4,7 +4,7 @@ namespace LibraryMgmt.Repository
 {
     public interface IAuthRepository
     {
-        Task<AdminUser> AuthenticateUserAsync(string username, string password);
+        Task<User> AuthenticateUserAsync(string username, string password);
         
     }
 }
