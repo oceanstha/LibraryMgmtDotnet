@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "G/IquYZZRLHsxOn58SpiKzIoiPU9PCjkZn7V6ZxYck0=",
+  "Hash": "/rk6sTlQ8Z2EW8Ni9Dnudx56AiO8DJK+jG5ojfbmaI0=",
   "Source": "LibraryMgmt",
   "BasePath": "_content/LibraryMgmt",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\LibraryMgmt.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\book-files\\b7625c81-f6aa-43ed-b032-a20764a53b0c_MACD.pdf",
+      "SourceId": "LibraryMgmt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\",
+      "BasePath": "_content/LibraryMgmt",
+      "RelativePath": "book-files/b7625c81-f6aa-43ed-b032-a20764a53b0c_MACD.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\book-files\\b7625c81-f6aa-43ed-b032-a20764a53b0c_MACD.pdf"
     },
     {
       "Identity": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\css\\site.css",

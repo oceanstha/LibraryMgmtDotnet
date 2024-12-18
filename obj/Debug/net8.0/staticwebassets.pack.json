@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\LibraryMgmt.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\book-files\\b7625c81-f6aa-43ed-b032-a20764a53b0c_MACD.pdf",
+      "PackagePath": "staticwebassets\\book-files\\b7625c81-f6aa-43ed-b032-a20764a53b0c_MACD.pdf"
+    },
+    {
       "Id": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
