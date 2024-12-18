@@ -13,9 +13,10 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IBookIssueRepository, BookIssueRepository>();
-builder.Services.AddScoped<IAdminUserRepository, AdminUserRepository>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
-builder.Services.AddTransient<AdminDbSeeder>();
+builder.Services.AddScoped<IFileUploadService, FileUploadService>();
+
+
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>

@@ -1,5 +1,6 @@
 ﻿using LibraryMgmt.Data;
 using LibraryMgmt.Models;
+using LibraryMgmt.Services;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -10,13 +11,22 @@ namespace LibraryMgmt.Repository
     public class BookRepository : IBookRepository
     {
         private readonly LibraryDbContext _libraryDbContext;
-        public BookRepository(LibraryDbContext libraryDbContext)
+        private readonly IFileUploadService _fileUploadService;
+        public BookRepository(LibraryDbContext libraryDbContext, IFileUploadService fileUploadService)
         {
             _libraryDbContext = libraryDbContext;
+            _fileUploadService = fileUploadService;
         }
 
-        public async Task<Book> AddBook(Book book)
+        public async Task<Book> AddBook(Book book, IFormFile file)
         {
+            // Upload the file using the FileUploadService
+            if (file != null && file.Length > 0)
+            {
+                string uploadedFilePath = await _fileUploadService.UploadFileAsync(file, "book-files");
+                book.FilePath = uploadedFilePath; // Set the file path in the book entity
+            }
+
             await _libraryDbContext.Books.AddAsync(book);
             await _libraryDbContext.SaveChangesAsync();
             return book;

@@ -23,6 +23,7 @@ namespace LibraryMgmt.Controllers
                 : await _bookRepository.SearchBookByTitle(searchTitle);
             return View(books);
         }
+
         [HttpGet]
         [Route("book/details/{guid}")]
         public async Task<IActionResult> Details(Guid guid)
@@ -36,17 +37,27 @@ namespace LibraryMgmt.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
-        public  async Task<IActionResult> Create(Book book)
+        public  async Task<IActionResult> Create(Book book, IFormFile file)
         {
-            if (ModelState.IsValid) 
+            try
             {
-                await _bookRepository.AddBook(book);
-                return RedirectToAction("Index", "Book");
+                if (ModelState.IsValid)
+                {
+                    await _bookRepository.AddBook(book, file);
+                    TempData["SuccessMessage"] = "Book added successfully!";
+                    return RedirectToAction("Index", "Book");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", $"Error: {ex.Message}");
             }
             return View(book);
         }
+
         [HttpGet]
         [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
         [Route("book/edit/{guid}")]

@@ -9,7 +9,7 @@ namespace LibraryMgmt.Data
         public DbSet<Book> Books { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<BookIssue> BookIssues { get; set; }
-        public DbSet<AdminUser> AdminUsers { get; set; }
+        
 
     }
 }

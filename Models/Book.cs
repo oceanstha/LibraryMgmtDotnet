@@ -11,5 +11,6 @@ namespace LibraryMgmt.Models
         public string ISBN { get; set; }
         public string Description { get; set; }
         public string Publisher { get; set; }
+        public string? FilePath {  get; set; }
     }
 }
