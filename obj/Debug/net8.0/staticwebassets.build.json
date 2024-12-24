@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/rk6sTlQ8Z2EW8Ni9Dnudx56AiO8DJK+jG5ojfbmaI0=",
+  "Hash": "e16ciHYEn78dxDIJg1jt1StdPKDm8T0iT0wcD7Ca+V4=",
   "Source": "LibraryMgmt",
   "BasePath": "_content/LibraryMgmt",
   "Mode": "Default",
@@ -55,12 +55,12 @@
       "OriginalItemSpec": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\LibraryMgmt.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\book-files\\b7625c81-f6aa-43ed-b032-a20764a53b0c_MACD.pdf",
+      "Identity": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\book-files\\4cb8067e-de32-4cea-acb9-edea4da562c9_GRU.pdf",
       "SourceId": "LibraryMgmt",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\",
       "BasePath": "_content/LibraryMgmt",
-      "RelativePath": "book-files/b7625c81-f6aa-43ed-b032-a20764a53b0c_MACD.pdf",
+      "RelativePath": "book-files/4cb8067e-de32-4cea-acb9-edea4da562c9_GRU.pdf",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -71,7 +71,26 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\book-files\\b7625c81-f6aa-43ed-b032-a20764a53b0c_MACD.pdf"
+      "OriginalItemSpec": "wwwroot\\book-files\\4cb8067e-de32-4cea-acb9-edea4da562c9_GRU.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\book-files\\54f6d91a-81ad-4178-92ec-2aa3b74be01e_MACD.pdf",
+      "SourceId": "LibraryMgmt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\",
+      "BasePath": "_content/LibraryMgmt",
+      "RelativePath": "book-files/54f6d91a-81ad-4178-92ec-2aa3b74be01e_MACD.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\book-files\\54f6d91a-81ad-4178-92ec-2aa3b74be01e_MACD.pdf"
     },
     {
       "Identity": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\css\\site.css",
@@ -1212,6 +1231,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\lib\\package.json",
+      "SourceId": "LibraryMgmt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\",
+      "BasePath": "_content/LibraryMgmt",
+      "RelativePath": "lib/package.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\package.json"
+    },
+    {
+      "Identity": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\lib\\package-lock.json",
+      "SourceId": "LibraryMgmt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\",
+      "BasePath": "_content/LibraryMgmt",
+      "RelativePath": "lib/package-lock.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\package-lock.json"
     }
   ]
 }

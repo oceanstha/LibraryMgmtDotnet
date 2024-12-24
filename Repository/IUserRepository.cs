@@ -9,5 +9,7 @@ namespace LibraryMgmt.Repository
         Task<User> AddUser(User user);
         Task<User> UpdateUser(User user);
         Task<User> DeleteUser(Guid guid);
+        string GetPdfFilePath(string fileName);
+
     }
 }

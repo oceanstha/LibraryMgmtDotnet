@@ -5,8 +5,12 @@
       "PackagePath": "staticwebassets\\LibraryMgmt.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\book-files\\b7625c81-f6aa-43ed-b032-a20764a53b0c_MACD.pdf",
-      "PackagePath": "staticwebassets\\book-files\\b7625c81-f6aa-43ed-b032-a20764a53b0c_MACD.pdf"
+      "Id": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\book-files\\4cb8067e-de32-4cea-acb9-edea4da562c9_GRU.pdf",
+      "PackagePath": "staticwebassets\\book-files\\4cb8067e-de32-4cea-acb9-edea4da562c9_GRU.pdf"
+    },
+    {
+      "Id": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\book-files\\54f6d91a-81ad-4178-92ec-2aa3b74be01e_MACD.pdf",
+      "PackagePath": "staticwebassets\\book-files\\54f6d91a-81ad-4178-92ec-2aa3b74be01e_MACD.pdf"
     },
     {
       "Id": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\css\\site.css",
@@ -247,6 +251,14 @@
     {
       "Id": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\lib\\package-lock.json",
+      "PackagePath": "staticwebassets\\lib\\package-lock.json"
+    },
+    {
+      "Id": "C:\\Users\\NABU-1DGMW33\\source\\repos\\LibraryMgmt\\wwwroot\\lib\\package.json",
+      "PackagePath": "staticwebassets\\lib\\package.json"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.LibraryMgmt.Microsoft.AspNetCore.StaticWebAssets.props",

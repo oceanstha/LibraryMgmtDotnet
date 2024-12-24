@@ -1,5 +1,6 @@
 ﻿using LibraryMgmt.Data;
 using LibraryMgmt.Models;
+using LibraryMgmt.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryMgmt.Repository
@@ -7,10 +8,12 @@ namespace LibraryMgmt.Repository
     public class UserRepository : IUserRepository
     {
         private readonly LibraryDbContext _libraryDbContext;
+        private readonly IPdfService _pdfService;
 
-        public UserRepository(LibraryDbContext libraryDbContext)
+        public UserRepository(LibraryDbContext libraryDbContext, IPdfService pdfService)
         {
             _libraryDbContext = libraryDbContext;
+            _pdfService = pdfService;
         }
 
         public async Task<User> AddUser(User user)
@@ -55,6 +58,11 @@ namespace LibraryMgmt.Repository
             _libraryDbContext.Users.Remove(user);
             await _libraryDbContext.SaveChangesAsync();
             return user;
+        }
+        public string GetPdfFilePath(string fileName)
+        {
+            // You can add additional business logic here before accessing the service
+            return _pdfService.GetPdfFile(fileName);
         }
     }
 }

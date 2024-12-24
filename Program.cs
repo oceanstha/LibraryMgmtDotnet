@@ -15,6 +15,9 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IBookIssueRepository, BookIssueRepository>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IFileUploadService, FileUploadService>();
+builder.Services.AddSingleton<IPdfService, PdfService>();
+builder.Services.AddRazorPages();
+
 
 
 
@@ -43,6 +46,18 @@ builder.Services.AddAuthorization(options =>
         ));
 });
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+// Configure CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("https://www.w3.org",
+                                              "https://localhost:7012");
+                      });
+});
+
 
 var app = builder.Build();
 
@@ -56,13 +71,17 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
 app.UseHttpsRedirection();
+app.UseDefaultFiles();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseCors(MyAllowSpecificOrigins);
 app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
+app.MapRazorPages();
 
 
 app.MapControllerRoute(

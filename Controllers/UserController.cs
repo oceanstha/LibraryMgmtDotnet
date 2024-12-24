@@ -93,5 +93,24 @@ namespace LibraryMgmt.Controllers
             return RedirectToAction("Index", "User");
         }
 
+
+        public IActionResult RenderPdf(string path)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                return NotFound("PDF file not found.");
+            }
+            // Ensure the path is properly formatted
+            string trimmedPath = path.TrimStart('/');
+
+            // Combine the base URL with the provided path
+            string baseUrl = "https://localhost:7012";
+            string fullUrl = $"{baseUrl}/{trimmedPath}";
+
+            // Pass the full URL to the ViewBag
+            ViewBag.PdfPath = fullUrl;
+            return View();
+        }
+
     }
 }

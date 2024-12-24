@@ -1,0 +1,28 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @* <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <title>PDF Viewer Demo | PDF Plugin</title> *@
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.8.94/css/materialdesignicons.min.css">
+    <script>
+        var pdfUrl = '@Url.Content(ViewBag.PdfPath)';
+        function loadPdfViewer(selector) {
+            
+            var viewer = new DsPdfViewer(selector, { /* Specify options here */ }
+            );
+            viewer.addDefaultPanels();
+            // viewer.open("https://localhost:7012/book-files/4cb8067e-de32-4cea-acb9-edea4da562c9_GRU.pdf"); this is sample
+            viewer.open(pdfUrl);
+        }
+    </script>
+</head>
+<body onload="loadPdfViewer('#root')">
+    <div id="root" style="height:708px; width:118.8%; margin-left:-125px; margin-top:-16px"></div>
+    <script type="text/javascript" src="/lib/node_modules/mescius/dspdfviewer/dspdfviewer.js"></script>
+</body>
+</html>
+
+

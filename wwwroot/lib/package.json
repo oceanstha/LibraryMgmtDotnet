@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@grapecity/gcpdfviewer": "^7.2.3",
+    "@mescius/dspdfviewer": "^8.0.0"
+  }
+}
