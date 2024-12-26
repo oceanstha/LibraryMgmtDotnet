@@ -50,7 +50,11 @@ namespace LibraryMgmt.Controllers
 
         public IActionResult Logout()
         {
-            HttpContext.Session.Clear(); 
+            HttpContext.Session.Clear();
+            foreach (var cookie in Request.Cookies.Keys)
+            {
+                Response.Cookies.Delete(cookie);
+            }
             return RedirectToAction("Login");
         }
 

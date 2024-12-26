@@ -28,11 +28,21 @@ namespace LibraryMgmt.Controllers
 
         [HttpGet]
         [Route("user/details/{guid}")]
+        [Authorize(AuthenticationSchemes ="CookieAuth")]
         public async Task<IActionResult> Details(Guid guid)
         {
             var user =await _userRepository.GetUser(guid);
             return View(user);
         }
+
+        //[Route("user/details")]
+        //[Authorize(AuthenticationSchemes = "CookieAuth")]
+        //public async Task<IActionResult> Details()
+        //{
+        //    return RedirectToAction("Index", "Books");
+        //}
+
+
         [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
         public IActionResult Create()
         {
@@ -96,7 +106,7 @@ namespace LibraryMgmt.Controllers
             return RedirectToAction("Index", "User");
         }
 
-
+        [Authorize(AuthenticationSchemes = "CookieAuth")]
         public async Task<IActionResult> RenderPdf(string path)
         {
             if (string.IsNullOrEmpty(path))
