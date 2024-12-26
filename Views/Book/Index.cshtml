@@ -9,6 +9,12 @@
         @TempData["SuccessMessage"]
     </div>
 }
+@if (TempData["NotFoundMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["NotFoundMessage"]
+    </div>
+}
 
 
 <h1>BOOKS</h1>

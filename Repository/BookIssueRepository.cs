@@ -16,7 +16,7 @@ namespace LibraryMgmt.Repository
             _libraryContext = libraryContext;  
         }
 
-        public IEnumerable<BookIssue> GetIssuedBooks()
+        public async Task<IEnumerable<BookIssue>> GetIssuedBooks()
         {
             return _libraryContext.BookIssues.Include(b=>b.Book).Include(u=>u.User).ToList();
         }

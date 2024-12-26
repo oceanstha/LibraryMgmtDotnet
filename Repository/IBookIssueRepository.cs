@@ -9,7 +9,7 @@ namespace LibraryMgmt.Repository
 
         BookIssueListViewModel GetIssue(Guid guid);
         void ReturnBook(Guid guid);
-        IEnumerable<BookIssue> GetIssuedBooks();
+        Task <IEnumerable<BookIssue>> GetIssuedBooks();
         IEnumerable<BookIssue> SearchIssuedBooks(string title);
 
         // Additional methods for fetching users and books

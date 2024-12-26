@@ -4,6 +4,7 @@ using LibraryMgmt.Models;
 using LibraryMgmt.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace LibraryMgmt.Controllers
 {
@@ -11,10 +12,12 @@ namespace LibraryMgmt.Controllers
     public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;
+        private readonly IBookIssueRepository _bookIssueRepository; 
 
-        public UserController(IUserRepository userRepository)
+        public UserController(IUserRepository userRepository, IBookIssueRepository bookIssueRepository)
         {
             _userRepository = userRepository;
+            _bookIssueRepository = bookIssueRepository;
         }
         //[Authorize(AuthenticationSchemes = "CookieAuth")]
         public async Task<IActionResult> Index()
@@ -94,23 +97,45 @@ namespace LibraryMgmt.Controllers
         }
 
 
-        public IActionResult RenderPdf(string path)
+        public async Task<IActionResult> RenderPdf(string path)
         {
             if (string.IsNullOrEmpty(path))
             {
                 return NotFound("PDF file not found.");
             }
-            // Ensure the path is properly formatted
-            string trimmedPath = path.TrimStart('/');
+            //Console.WriteLine("PATH: "+path);
+            var adminUserId = HttpContext.Session.GetString("AdminUserId");
+            //Console.WriteLine("ADMINUSERID: "+adminUserId);
+            Guid guid = Guid.Parse(adminUserId);
+            //var (user, userIssue) = await _userRepository.GetUser(guid);
 
-            // Combine the base URL with the provided path
-            string baseUrl = "https://localhost:7012";
-            string fullUrl = $"{baseUrl}/{trimmedPath}";
+            var allIssuedBooks = await _bookIssueRepository.GetIssuedBooks(); 
+            var bookIssues = allIssuedBooks.Where(x => x.UserId == guid);
 
-            // Pass the full URL to the ViewBag
-            ViewBag.PdfPath = fullUrl;
-            return View();
+            bool pathExists = bookIssues.Any(issue =>
+            !string.IsNullOrEmpty(issue.Book.FilePath) &&
+            issue.Book.FilePath.Contains(path, StringComparison.OrdinalIgnoreCase)
+);
+
+            //foreach (var bookIssue in bookIssues)
+            //{
+            //    Console.WriteLine($"Book: {bookIssue.Book.Title}, FilePath: {bookIssue.Book.FilePath}");
+            //}
+
+            if (pathExists)
+            {
+                string trimmedPath = path.TrimStart('/');
+                string baseUrl = "https://localhost:7012";
+                string fullUrl = $"{baseUrl}/{trimmedPath}";
+                ViewBag.PdfPath = fullUrl;
+                return View();
+            }
+            else
+            {
+                TempData["NotFoundMessage"] = "You do not have access to this book.";
+                return RedirectToAction("Index", "Book");
+            }
+            
         }
-
     }
 }

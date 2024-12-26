@@ -57,10 +57,10 @@ namespace LibraryMgmt.Controllers
             return View(userBookIssueViewModel);
         }
         [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
-        public IActionResult Index(string searchTitle)
+        public async Task<IActionResult> Index(string searchTitle)
         {
             
-            var issueBooks = string.IsNullOrEmpty(searchTitle) ? _bookIssueRepository.GetIssuedBooks() : _bookIssueRepository.SearchIssuedBooks(searchTitle);
+            var issueBooks = string.IsNullOrEmpty(searchTitle) ? await _bookIssueRepository.GetIssuedBooks() : _bookIssueRepository.SearchIssuedBooks(searchTitle);
 
             var issuedBookViewModels = issueBooks.Select(issue => new BookIssueListViewModel
                 {
