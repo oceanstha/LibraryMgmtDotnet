@@ -35,13 +35,6 @@ namespace LibraryMgmt.Controllers
             return View(user);
         }
 
-        //[Route("user/details")]
-        //[Authorize(AuthenticationSchemes = "CookieAuth")]
-        //public async Task<IActionResult> Details()
-        //{
-        //    return RedirectToAction("Index", "Books");
-        //}
-
 
         [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
         public IActionResult Create()

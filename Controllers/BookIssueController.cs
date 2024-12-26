@@ -1,4 +1,5 @@
 ﻿using LibraryMgmt.Filters;
+using LibraryMgmt.Models;
 using LibraryMgmt.Repository;
 using LibraryMgmt.ViewModel;
 using Microsoft.AspNetCore.Authorization;
@@ -56,6 +57,26 @@ namespace LibraryMgmt.Controllers
             userBookIssueViewModel.Books=_bookIssueRepository.GetBooks().ToList();
             return View(userBookIssueViewModel);
         }
+
+        [Route("BookIssue/Subscribe/{bookId:Guid}")]
+        public IActionResult Subscribe(Guid bookId)
+        {
+            var adminUserId = HttpContext.Session.GetString("AdminUserId");
+            Guid userId = Guid.Parse(adminUserId);
+            var bookSubscribeViewModel = new UserBookIssueViewModel
+            {
+                BookIssueId = Guid.NewGuid(),
+                SelectedBookId = bookId,
+                SelectedUserId =userId,
+            };
+            if (ModelState.IsValid)
+            {
+                _bookIssueRepository.IssueBook(bookSubscribeViewModel);
+            }
+            return RedirectToAction("Index", "Book");
+        }
+
+
         [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
         public async Task<IActionResult> Index(string searchTitle)
         {
