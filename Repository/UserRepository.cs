@@ -35,7 +35,7 @@ namespace LibraryMgmt.Repository
         public async Task<(User,List<BookIssue>)> GetUser(Guid guid)
         {          
            var  userDetail =  await _libraryDbContext.Users.FindAsync(guid);
-           var  userIssueDetail = await _libraryDbContext.BookIssues.Include(b=>b.Book).Include(u=>u.User).Where(u=>u.UserId == guid).ToListAsync();
+           var  userIssueDetail = await _libraryDbContext.BookIssues.Include(b=>b.Book).Include(u=>u.User).Where(u=>u.UserId == guid && u.ReturnDate==null).ToListAsync();
            return (userDetail, userIssueDetail);
         }
       

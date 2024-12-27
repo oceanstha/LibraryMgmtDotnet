@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LibraryMgmt.Models.Book>
+﻿@model IEnumerable<LibraryMgmt.ViewModel.BookViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,6 +13,19 @@
 {
     <div class="alert alert-success">
         @TempData["NotFoundMessage"]
+    </div>
+}
+
+@if (TempData["SubsciptionSuccess"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SubsciptionSuccess"]
+    </div>
+}
+@if (TempData["SubscriptionExist"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SubscriptionExist"]
     </div>
 }
 
@@ -34,14 +47,14 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayNameFor(model => model.Book.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Author)
+                @Html.DisplayNameFor(model => model.Book.Author)
             </th>
             
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.Book.Description)
             </th>
             
             <th></th>
@@ -51,30 +64,36 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Title)
+                    @Html.DisplayFor(modelItem => item.Book.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Author)
+                    @Html.DisplayFor(modelItem => item.Book.Author)
             </td>
             
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                    @Html.DisplayFor(modelItem => item.Book.Description)
             </td>
             
                 @if (User.HasClaim(c => c.Type == "Role" && (c.Value == "Admin" | c.Value == "Manager")))
                 {
             <td>
 
-                <a asp-action="Edit" asp-route-id="@item.Guid">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Guid">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Guid">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.Book.Guid">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Book.Guid">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Book.Guid">Delete</a>
             </td>
                 }
                 @if (User.HasClaim(c => c.Type == "Role" && c.Value == "User"))
                 {
                     <td>
-                        <a asp-action="Details" asp-route-id="@item.Guid">Details</a>|
-                        <a asp-action="Subscribe" asp-controller="BookIssue" asp-route-id="@item.Guid">Subscribe</a>
+                        <a asp-action="Details" asp-route-id="@item.Book.Guid">Details</a>|
+                        @if (!item.IsIssued)
+                        {
+                            <a asp-action="Subscribe" asp-controller="BookIssue" asp-route-id="@item.Book.Guid">Subscribe</a>
+                        }else
+                        {
+                            <a href="@Url.Action("RenderPdf", "User", new { path = item.Book.FilePath })">View PDF</a>
+                        }
                     </td>
                 }
         </tr>

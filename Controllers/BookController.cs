@@ -4,6 +4,7 @@ using LibraryMgmt.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace LibraryMgmt.Controllers
 {
@@ -11,17 +12,32 @@ namespace LibraryMgmt.Controllers
     public class BookController : Controller
     {
         private readonly IBookRepository _bookRepository;
+        private readonly IUserRepository _userRepository;
 
-        public BookController(IBookRepository bookRepository)
+        public BookController(IBookRepository bookRepository, IUserRepository userRepository)
         {
             _bookRepository = bookRepository;
+            _userRepository = userRepository;
         }
         public async Task<IActionResult> Index(string searchTitle)
         {
+            var adminUserId = HttpContext.Session.GetString("AdminUserId");
+            Guid userId = Guid.Parse(adminUserId);
+            (var userDetail, var userIssueDetail) = await _userRepository.GetUser(userId);
+            
+
             var books = string.IsNullOrEmpty(searchTitle)
                 ? await _bookRepository.GetAllBooks() 
                 : await _bookRepository.SearchBookByTitle(searchTitle);
-            return View(books);
+
+            var bookViewModels = books.Select(book => new ViewModel.BookViewModel
+            {
+                Book = book,
+                IsIssued = userIssueDetail.Any(issue => issue.BookId == book.Guid && issue.ReturnDate==null) 
+            }).ToList();
+
+            return View(bookViewModels);
+            
         }
 
         [HttpGet]
@@ -98,6 +114,8 @@ namespace LibraryMgmt.Controllers
             await _bookRepository.DeleteBook(guid);
             return RedirectToAction("Index", "Book");
         }
+        
+
 
     }
 }

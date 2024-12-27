@@ -1,4 +1,5 @@
-﻿using LibraryMgmt.Filters;
+﻿using Humanizer;
+using LibraryMgmt.Filters;
 using LibraryMgmt.Models;
 using LibraryMgmt.Repository;
 using LibraryMgmt.ViewModel;
@@ -59,20 +60,31 @@ namespace LibraryMgmt.Controllers
         }
 
         [Route("BookIssue/Subscribe/{bookId:Guid}")]
-        public IActionResult Subscribe(Guid bookId)
+        public async Task<IActionResult> Subscribe(Guid bookId)
         {
             var adminUserId = HttpContext.Session.GetString("AdminUserId");
             Guid userId = Guid.Parse(adminUserId);
-            var bookSubscribeViewModel = new UserBookIssueViewModel
+            (var userDetail, var userIssueDetail)  =await  _userRepository.GetUser(userId);
+            bool isBookIssued = userIssueDetail.Any(issue => issue.BookId == bookId && issue.ReturnDate==null);
+            if (isBookIssued)
             {
-                BookIssueId = Guid.NewGuid(),
-                SelectedBookId = bookId,
-                SelectedUserId =userId,
-            };
-            if (ModelState.IsValid)
+                TempData["SubscriptionExist"] = "You already have access to this book!";
+            }else
             {
-                _bookIssueRepository.IssueBook(bookSubscribeViewModel);
+                var bookSubscribeViewModel = new UserBookIssueViewModel
+                {
+                    BookIssueId = Guid.NewGuid(),
+                    SelectedBookId = bookId,
+                    SelectedUserId = userId,
+                };
+                if (ModelState.IsValid)
+                {
+                    _bookIssueRepository.IssueBook(bookSubscribeViewModel);
+                    TempData["SubsciptionSuccess"] = "You have access to the book now!";
+                }
             }
+            
+            
             return RedirectToAction("Index", "Book");
         }
 
