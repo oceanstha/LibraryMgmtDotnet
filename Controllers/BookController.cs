@@ -56,6 +56,8 @@ namespace LibraryMgmt.Controllers
 
         [HttpPost]
         [Authorize(Policy = "AdminOrManagerPolicy", AuthenticationSchemes = "CookieAuth")]
+        [RequestSizeLimit(100_000_000)] // 100 MB
+        [RequestFormLimits(MultipartBodyLengthLimit = 100_000_000)]
         public  async Task<IActionResult> Create(Book book, IFormFile file)
         {
             try

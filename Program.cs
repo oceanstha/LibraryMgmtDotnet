@@ -1,6 +1,7 @@
 using LibraryMgmt.Data;
 using LibraryMgmt.Repository;
 using LibraryMgmt.Services;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -56,6 +57,10 @@ builder.Services.AddCors(options =>
                           policy.WithOrigins("https://www.w3.org",
                                               "https://localhost:7012");
                       });
+});
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = 100_000_000; // 100 MB
 });
 
 
